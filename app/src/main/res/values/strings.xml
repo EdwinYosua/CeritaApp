@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CeritaApp</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="icon_app">icon app</string>
+    <string name="selamat_datang_di_ceritaapp">Selamat Datang di CeritaApp</string>
+    <string name="txt_masuk">Masuk</string>
+    <string name="txt_daftar">Daftar</string>
+    <string name="error_nama">Nama Wajib Diisi</string>
+    <string name="error_email">Format Email Salah</string>
+    <string name="error_password">Password Kurang Dari 8 Digit</string>
+    <string name="register_story_app">Register StoryApp</string>
+    <string name="new_acc_text">Buat Akun Baru ?</string>
 </resources>

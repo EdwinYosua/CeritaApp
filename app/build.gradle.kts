@@ -15,6 +15,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String","BASE_URL","\"https://story-api.dicoding.dev/v1/\"")
     }
 
     buildTypes {
@@ -33,14 +34,30 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
 
+    //GSON
+    implementation(libs.gson)
+    //Retrofit
+    implementation (libs.retrofit)
+    implementation(libs.converter.gson.v290)
+    //OkHTTP
+    implementation(libs.squareup.okhttp)
+    implementation(libs.com.squareup.okhttp3.logging.interceptor)
+    //ViewModel
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.activity.ktx)
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -1,21 +1,84 @@
 package com.edwinyosua.ceritaapp.ui.register
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.edwinyosua.ceritaapp.MainActivity
 import com.edwinyosua.ceritaapp.R
+import com.edwinyosua.ceritaapp.databinding.ActivityRegisterBinding
+import com.edwinyosua.ceritaapp.network.ApiResult
+import com.edwinyosua.ceritaapp.ui.ViewModelFactory
 
 class RegisterAct : AppCompatActivity() {
+    private lateinit var binding: ActivityRegisterBinding
+    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+    private val registerViewModel: RegisterViewModel by viewModels<RegisterViewModel> {
+        factory
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_register)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        binding.apply {
+            btnDaftar.setOnClickListener {
+
+                if (edtName.text?.isEmpty() == true) {
+                    edtName.error = getString(R.string.error_nama)
+                }
+                if (edtEmail.text?.isEmpty() == true) {
+                    edtEmail.error = getString(R.string.error_email)
+                }
+                if (edtPassword.text?.isEmpty() == true) {
+                    edtPassword.error = getString(R.string.error_password)
+                }
+                if (edtName.text?.isNotEmpty() == true
+                    && edtEmail.text?.isNotEmpty() == true
+                    && edtPassword.text?.isNotEmpty() == true
+                ) {
+                    registerViewModel.registerUser(
+                        edtName.text?.trim().toString(),
+                        edtEmail.text?.trim().toString(),
+                        edtPassword.text?.trim().toString()
+                    )
+                }
+            }
+
+
+            registerViewModel.registResult.observe(this@RegisterAct) { response ->
+                when (response) {
+                    is ApiResult.ApiError -> {
+                        prgBar.visibility = View.GONE
+                        showToast(response.error)
+                        btnDaftar.isEnabled = true
+                    }
+
+                    is ApiResult.ApiSuccess -> {
+                        prgBar.visibility = View.GONE
+                        showToast(response.data.message.toString())
+                        btnDaftar.isEnabled = true
+                        startActivity(Intent(this@RegisterAct, MainActivity::class.java))
+                        finish()
+                    }
+
+                    ApiResult.Loading -> {
+                        prgBar.visibility = View.VISIBLE
+                        btnDaftar.isEnabled = false
+                    }
+                }
+            }
+
         }
+
+
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
