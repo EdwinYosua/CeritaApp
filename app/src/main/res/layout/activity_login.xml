@@ -6,40 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="30dp"
-    tools:context=".ui.register.RegisterAct">
+    tools:context=".ui.login.LoginAct">
 
     <ImageView
         android:id="@+id/app_icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/icon_app"
         android:src="@drawable/account_circle_48dp_fill0_wght400_grad0_opsz48"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/register_text"
+        android:id="@+id/login_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/register"
+        android:text="@string/login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_icon" />
-
-    <com.edwinyosua.ceritaapp.ui.component.NameField
-        android:id="@+id/edt_name"
-        style="@style/CustomEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_text" />
 
     <com.edwinyosua.ceritaapp.ui.component.EmailField
         android:id="@+id/edt_email"
         style="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_name" />
+        app:layout_constraintTop_toBottomOf="@id/login_txt" />
 
     <com.edwinyosua.ceritaapp.ui.component.PasswordField
         android:id="@+id/edt_password"
@@ -49,24 +43,14 @@
         app:layout_constraintTop_toBottomOf="@id/edt_email" />
 
     <Button
-        android:id="@+id/btn_daftar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/txt_daftar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_password" />
-
-
-    <ProgressBar
-        android:id="@+id/prg_bar"
+        android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:visibility="gone"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_daftar"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@id/edt_password"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

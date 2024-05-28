@@ -13,6 +13,7 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
+
     @FormUrlEncoded
     @POST("register")
     suspend fun register(

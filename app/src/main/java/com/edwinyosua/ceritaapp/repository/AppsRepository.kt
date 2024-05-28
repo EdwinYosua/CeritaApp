@@ -6,8 +6,8 @@ class AppsRepository private constructor(
     private val apiService: ApiService
 ) {
 
-    suspend fun register(name: String, email: String, pass: String) =
-        apiService.register(name, email, pass)
+    suspend fun register(name: String, email: String, pass: String) = apiService.register(name, email, pass)
+    suspend fun login(email: String, pass: String) = apiService.login(email, pass)
 
     companion object {
         @Volatile
