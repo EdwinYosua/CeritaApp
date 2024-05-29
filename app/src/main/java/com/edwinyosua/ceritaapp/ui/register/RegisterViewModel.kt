@@ -8,6 +8,7 @@ import com.edwinyosua.ceritaapp.network.ApiResponse.RegisterResponse
 import com.edwinyosua.ceritaapp.network.ApiResult
 import com.edwinyosua.ceritaapp.repository.AppsRepository
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class RegisterViewModel(private val appRepo: AppsRepository) : ViewModel() {
 
@@ -21,7 +22,8 @@ class RegisterViewModel(private val appRepo: AppsRepository) : ViewModel() {
                 if (response.error != true) {
                     _registResult.value = ApiResult.ApiSuccess(response)
                 }
-            } catch (e: Exception) {
+            } catch (e: HttpException) {
+                e.printStackTrace()
                 _registResult.value = ApiResult.ApiError(e.message.toString())
             }
         }

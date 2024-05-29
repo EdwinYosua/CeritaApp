@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.edwinyosua.ceritaapp.di.Injection
+import com.edwinyosua.ceritaapp.local.SettingPreferences
+import com.edwinyosua.ceritaapp.local.dataStore
 import com.edwinyosua.ceritaapp.repository.AppsRepository
 import com.edwinyosua.ceritaapp.ui.login.LoginViewModel
 import com.edwinyosua.ceritaapp.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
-    private val appRepo: AppsRepository
+    private val appRepo: AppsRepository,
+    private val pref: SettingPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
@@ -27,7 +30,7 @@ class ViewModelFactory private constructor(
         @Volatile
         private var instance: ViewModelFactory? = null
         fun getInstance(context: Context): ViewModelFactory = instance ?: synchronized(this) {
-            instance ?: ViewModelFactory(Injection.provideRepo(context))
+            instance ?: ViewModelFactory(Injection.provideRepo(context), pref = SettingPreferences.getInstance(context.dataStore))
         }.also { instance = it }
     }
 }

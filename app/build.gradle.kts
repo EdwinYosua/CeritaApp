@@ -53,6 +53,12 @@ dependencies {
     //ViewModel
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.activity.ktx)
+    //DataStore
+    implementation(libs.androidx.datastore.preferences)
+    //Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
 
 
     implementation(libs.androidx.core.ktx)
