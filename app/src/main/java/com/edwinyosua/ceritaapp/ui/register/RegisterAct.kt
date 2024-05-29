@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.edwinyosua.ceritaapp.MainActivity
+import com.edwinyosua.ceritaapp.ui.main.MainActivity
 import com.edwinyosua.ceritaapp.R
 import com.edwinyosua.ceritaapp.databinding.ActivityRegisterBinding
 import com.edwinyosua.ceritaapp.network.ApiResult
@@ -14,15 +14,19 @@ import com.edwinyosua.ceritaapp.ui.ViewModelFactory
 
 class RegisterAct : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-    private val registerViewModel: RegisterViewModel by viewModels<RegisterViewModel> {
-        factory
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+        val registerViewModel: RegisterViewModel by viewModels<RegisterViewModel> {
+            factory
+        }
+
 
 
         binding.apply {
@@ -72,10 +76,7 @@ class RegisterAct : AppCompatActivity() {
                     }
                 }
             }
-
         }
-
-
     }
 
     private fun showToast(msg: String) {

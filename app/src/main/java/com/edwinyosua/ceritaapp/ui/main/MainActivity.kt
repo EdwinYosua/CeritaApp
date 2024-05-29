@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp
+package com.edwinyosua.ceritaapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
