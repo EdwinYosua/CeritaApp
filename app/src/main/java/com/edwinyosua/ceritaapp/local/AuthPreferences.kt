@@ -14,6 +14,7 @@ class AuthPreferences(context: Context) {
     fun saveLoginToken(token: String) {
         preferences.edit().putString(PREF_KEY_AUTH_TOKEN, token).apply()
     }
+
     fun getLoginToken(): String? = preferences.getString(PREF_KEY_AUTH_TOKEN, null)
 
     fun removeLoginToken() {

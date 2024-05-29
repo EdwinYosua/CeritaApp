@@ -20,7 +20,7 @@ class ViewModelFactory private constructor(
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
-        if(modelClass.isAssignableFrom(MainViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             return MainViewModel(appRepo) as T
         }
         if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {

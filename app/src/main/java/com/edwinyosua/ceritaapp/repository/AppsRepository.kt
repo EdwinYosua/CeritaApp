@@ -11,12 +11,16 @@ class AppsRepository private constructor(
 
     fun getToken() = pref.getLoginToken()
 
-    suspend fun saveToken(token: String) = pref.saveLoginToken(token)
-
     suspend fun register(name: String, email: String, pass: String) =
         apiService.register(name, email, pass)
 
-    suspend fun login(email: String, pass: String): LoginResponse = apiService.login(email, pass)
+    suspend fun login(email: String, pass: String): LoginResponse {
+        val client = apiService.login(email, pass)
+        if (client.loginResult?.token?.isNotEmpty() == true) {
+            pref.saveLoginToken(client.loginResult.token)
+        }
+        return client
+    }
 
     companion object {
         @Volatile

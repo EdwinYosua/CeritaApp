@@ -49,20 +49,22 @@ class LoginAct : AppCompatActivity() {
                 }
             }
 
-            loginViewModel.loginResult.observe(this@LoginAct){ response ->
-                when(response) {
+            loginViewModel.loginResult.observe(this@LoginAct) { response ->
+                when (response) {
                     is ApiResult.ApiError -> {
                         prgBar.visibility = View.GONE
                         showToast(response.error)
                         btnLogin.isEnabled = true
                     }
+
                     is ApiResult.ApiSuccess -> {
                         prgBar.visibility = View.GONE
                         showToast(response.data.message.toString())
                         btnLogin.isEnabled = true
-                        startActivity(Intent(this@LoginAct,HomeAct::class.java))
+                        startActivity(Intent(this@LoginAct, HomeAct::class.java))
                         finish()
                     }
+
                     ApiResult.Loading -> {
                         prgBar.visibility = View.VISIBLE
                         btnLogin.isEnabled = false

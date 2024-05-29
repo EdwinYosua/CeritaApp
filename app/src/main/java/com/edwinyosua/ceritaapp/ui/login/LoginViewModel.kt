@@ -16,8 +16,7 @@ class LoginViewModel(
 
     private val _loginResult = MutableLiveData<ApiResult<LoginResponse>>()
     val loginResult: LiveData<ApiResult<LoginResponse>> = _loginResult
-//    private val _authToken = MutableLiveData<String?>()
-//    val authToken : LiveData<String?> = _authToken
+
 
     fun loginUser(email: String, pass: String) {
         viewModelScope.launch {
@@ -25,8 +24,6 @@ class LoginViewModel(
                 _loginResult.value = ApiResult.Loading
                 val response = appRepo.login(email, pass)
                 if (response.loginResult?.token?.isNotEmpty() == true) {
-//                    _authToken.value = response.loginResult.token
-                    appRepo.saveToken(response.loginResult.token)
                     _loginResult.value = ApiResult.ApiSuccess(response)
                 }
             } catch (e: HttpException) {

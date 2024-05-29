@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.edwinyosua.ceritaapp.ui.main.MainActivity
 import com.edwinyosua.ceritaapp.R
 import com.edwinyosua.ceritaapp.databinding.ActivityRegisterBinding
 import com.edwinyosua.ceritaapp.network.ApiResult
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
+import com.edwinyosua.ceritaapp.ui.main.MainActivity
 
 class RegisterAct : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
