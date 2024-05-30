@@ -9,7 +9,7 @@ class AppsRepository private constructor(
     private val pref: SettingPreferences
 ) {
 
-    fun getToken() = pref.getLoginToken()
+    suspend fun getToken() = pref.getLoginToken()
 
     suspend fun register(name: String, email: String, pass: String) =
         apiService.register(name, email, pass)
