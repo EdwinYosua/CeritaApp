@@ -66,7 +66,14 @@ class RegisterAct : AppCompatActivity() {
                         prgBar.visibility = View.GONE
                         showToast(response.data.message.toString())
                         btnDaftar.isEnabled = true
-                        startActivity(Intent(this@RegisterAct, MainActivity::class.java))
+                        val registIntent = Intent(this@RegisterAct, MainActivity::class.java)
+                        startActivity(
+                            registIntent.addFlags(
+                                Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                                        Intent.FLAG_ACTIVITY_NEW_TASK or
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            )
+                        )
                         finish()
                     }
 
