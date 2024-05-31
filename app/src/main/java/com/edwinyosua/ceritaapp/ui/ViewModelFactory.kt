@@ -14,7 +14,7 @@ import com.edwinyosua.ceritaapp.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
     private val appRepo: AppsRepository,
-    private val pref: SettingPreferences
+//    private val pref: SettingPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
@@ -41,7 +41,7 @@ class ViewModelFactory private constructor(
         fun getInstance(context: Context): ViewModelFactory = instance ?: synchronized(this) {
             instance ?: ViewModelFactory(
                 Injection.provideRepo(context),
-                pref = SettingPreferences.getInstance(context.dataStore)
+//                pref = SettingPreferences.getInstance(context.dataStore)
             )
         }.also { instance = it }
     }

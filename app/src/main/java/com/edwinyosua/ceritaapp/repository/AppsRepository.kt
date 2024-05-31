@@ -1,5 +1,6 @@
 package com.edwinyosua.ceritaapp.repository
 
+import androidx.datastore.dataStore
 import com.edwinyosua.ceritaapp.local.SettingPreferences
 import com.edwinyosua.ceritaapp.network.ApiResponse.LoginResponse
 import com.edwinyosua.ceritaapp.network.ApiService
@@ -9,7 +10,9 @@ class AppsRepository private constructor(
     private val pref: SettingPreferences
 ) {
 
-    suspend fun getToken() = pref.getLoginToken()
+    fun getToken() = pref.getLoginToken()
+
+    suspend fun clearToken() = pref.clearLoginToken()
 
     suspend fun register(name: String, email: String, pass: String) =
         apiService.register(name, email, pass)

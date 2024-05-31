@@ -61,7 +61,14 @@ class LoginAct : AppCompatActivity() {
                         prgBar.visibility = View.GONE
                         showToast(response.data.message.toString())
                         btnLogin.isEnabled = true
-                        startActivity(Intent(this@LoginAct, HomeAct::class.java))
+                        val loginIntent = Intent(this@LoginAct, HomeAct::class.java)
+                        startActivity(
+                            loginIntent.addFlags(
+                                Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                                        Intent.FLAG_ACTIVITY_NEW_TASK or
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            )
+                        )
                         finish()
                     }
 
