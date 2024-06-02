@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.network.ApiResponse
+package com.edwinyosua.ceritaapp.network.apiresponse
 
 import com.google.gson.annotations.SerializedName
 

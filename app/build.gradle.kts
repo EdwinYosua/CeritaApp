@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -58,8 +59,14 @@ dependencies {
     //Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-
-
+    //Paging
+    implementation (libs.androidx.paging.runtime)
+    //Glide
+    implementation (libs.glide)
+    //Room
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.room.paging)
+    ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

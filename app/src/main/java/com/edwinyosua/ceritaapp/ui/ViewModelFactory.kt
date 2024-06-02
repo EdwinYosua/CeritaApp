@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.edwinyosua.ceritaapp.di.Injection
-import com.edwinyosua.ceritaapp.local.SettingPreferences
-import com.edwinyosua.ceritaapp.local.dataStore
 import com.edwinyosua.ceritaapp.repository.AppsRepository
 import com.edwinyosua.ceritaapp.ui.home.HomeViewModel
 import com.edwinyosua.ceritaapp.ui.login.LoginViewModel

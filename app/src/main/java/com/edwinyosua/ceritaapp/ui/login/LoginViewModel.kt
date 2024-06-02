@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.edwinyosua.ceritaapp.network.ApiResponse.LoginResponse
+import com.edwinyosua.ceritaapp.network.apiresponse.LoginResponse
 import com.edwinyosua.ceritaapp.network.ApiResult
 import com.edwinyosua.ceritaapp.repository.AppsRepository
 import kotlinx.coroutines.launch
