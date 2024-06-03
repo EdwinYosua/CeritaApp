@@ -1,6 +1,6 @@
 package com.edwinyosua.ceritaapp.network
 
-import com.edwinyosua.ceritaapp.network.apiresponse.ListStoryItem
+import com.edwinyosua.ceritaapp.network.apiresponse.DetailResponse
 import com.edwinyosua.ceritaapp.network.apiresponse.LoginResponse
 import com.edwinyosua.ceritaapp.network.apiresponse.RegisterResponse
 import com.edwinyosua.ceritaapp.network.apiresponse.StoriesResponse
@@ -9,6 +9,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -29,8 +30,13 @@ interface ApiService {
 
     @GET("stories")
     suspend fun getStories(
-//        @Header("Authorization") token: String,
         @Query("page") page: Int = 1,
         @Query("size") size: Int = 20
     ): Response<StoriesResponse>
+
+    @GET("stories/{id}")
+    suspend fun getDetailStories(
+        @Path("id") id: String
+    ): DetailResponse
+
 }

@@ -43,8 +43,6 @@ class AppsRepository private constructor(
     }
 
 
-//    suspend fun getStories(token: String) = apiService.getStories(token)
-
 
     companion object {
         @Volatile

@@ -5,10 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.edwinyosua.ceritaapp.di.Injection
 import com.edwinyosua.ceritaapp.repository.AppsRepository
-import com.edwinyosua.ceritaapp.ui.home.HomeViewModel
-import com.edwinyosua.ceritaapp.ui.login.LoginViewModel
-import com.edwinyosua.ceritaapp.ui.main.MainViewModel
-import com.edwinyosua.ceritaapp.ui.register.RegisterViewModel
+import com.edwinyosua.ceritaapp.ui.activity.detail.DetailViewModel
+import com.edwinyosua.ceritaapp.ui.activity.home.HomeViewModel
+import com.edwinyosua.ceritaapp.ui.activity.login.LoginViewModel
+import com.edwinyosua.ceritaapp.ui.activity.main.MainViewModel
+import com.edwinyosua.ceritaapp.ui.activity.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
     private val appRepo: AppsRepository,
@@ -29,6 +30,9 @@ class ViewModelFactory private constructor(
         }
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(appRepo) as T
+        }
+        if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
+            return DetailViewModel(appRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class : ${modelClass.name}")
     }

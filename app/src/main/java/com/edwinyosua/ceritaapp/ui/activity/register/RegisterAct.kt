@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.ui.register
+package com.edwinyosua.ceritaapp.ui.activity.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import com.edwinyosua.ceritaapp.R
 import com.edwinyosua.ceritaapp.databinding.ActivityRegisterBinding
 import com.edwinyosua.ceritaapp.network.ApiResult
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
-import com.edwinyosua.ceritaapp.ui.main.MainActivity
+import com.edwinyosua.ceritaapp.ui.activity.main.MainActivity
 
 class RegisterAct : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding

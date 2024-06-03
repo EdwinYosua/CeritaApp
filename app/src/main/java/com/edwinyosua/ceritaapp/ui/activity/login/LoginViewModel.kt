@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.ui.login
+package com.edwinyosua.ceritaapp.ui.activity.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.ui.main
+package com.edwinyosua.ceritaapp.ui.activity.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.edwinyosua.ceritaapp.databinding.ActivityMainBinding
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
-import com.edwinyosua.ceritaapp.ui.home.HomeAct
-import com.edwinyosua.ceritaapp.ui.login.LoginAct
-import com.edwinyosua.ceritaapp.ui.register.RegisterAct
+import com.edwinyosua.ceritaapp.ui.activity.home.HomeAct
+import com.edwinyosua.ceritaapp.ui.activity.login.LoginAct
+import com.edwinyosua.ceritaapp.ui.activity.register.RegisterAct
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

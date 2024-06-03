@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.ui.home
+package com.edwinyosua.ceritaapp.ui.activity.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.edwinyosua.ceritaapp.databinding.ActivityHomeBinding
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
 import com.edwinyosua.ceritaapp.ui.adapter.LoadingStateAdapter
 import com.edwinyosua.ceritaapp.ui.adapter.StoryAdapter
-import com.edwinyosua.ceritaapp.ui.main.MainActivity
+import com.edwinyosua.ceritaapp.ui.activity.main.MainActivity
 
 class HomeAct : AppCompatActivity() {
 

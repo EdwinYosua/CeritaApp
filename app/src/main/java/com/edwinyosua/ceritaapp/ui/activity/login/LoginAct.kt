@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.ui.login
+package com.edwinyosua.ceritaapp.ui.activity.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import com.edwinyosua.ceritaapp.R
 import com.edwinyosua.ceritaapp.databinding.ActivityLoginBinding
 import com.edwinyosua.ceritaapp.network.ApiResult
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
-import com.edwinyosua.ceritaapp.ui.home.HomeAct
+import com.edwinyosua.ceritaapp.ui.activity.home.HomeAct
 
 class LoginAct : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

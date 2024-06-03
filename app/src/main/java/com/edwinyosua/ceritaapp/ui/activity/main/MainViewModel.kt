@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.ui.main
+package com.edwinyosua.ceritaapp.ui.activity.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

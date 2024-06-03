@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="30dp"
-    tools:context=".ui.home.HomeAct">
+    tools:context=".ui.activity.home.HomeAct">
 
 
     <androidx.recyclerview.widget.RecyclerView

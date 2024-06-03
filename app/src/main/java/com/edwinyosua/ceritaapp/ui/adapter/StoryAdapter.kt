@@ -12,16 +12,6 @@ import com.edwinyosua.ceritaapp.network.apiresponse.ListStoryItem
 class StoryAdapter() :
     PagingDataAdapter<ListStoryItem, StoryAdapter.StoryHolder>(DIFF_CALLBACK) {
 
-//    private val stories = ArrayList<ListStoryItem>()
-//
-//    fun setList(list: List<ListStoryItem>) {
-//        val diffCalBack = DiffCallbackUtil(stories, list)
-//        val diffResult = DiffUtil.calculateDiff(diffCalBack)
-//
-//        stories.clear()
-//        stories.addAll(list)
-//        diffResult.dispatchUpdatesTo(this)
-//    }
 
     class StoryHolder(private val binding: StoriesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -31,7 +21,6 @@ class StoryAdapter() :
             Glide.with(binding.root.context)
                 .load(story.photoUrl)
                 .into(binding.storiesImg)
-
         }
     }
 
@@ -61,5 +50,4 @@ class StoryAdapter() :
             }
         }
     }
-
 }

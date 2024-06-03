@@ -15,4 +15,5 @@
     <string name="Logout">Logout</string>
     <string name="story_img">story_img</string>
     <string name="retry_txt">Retry</string>
+    <string name="image_detail">image detail</string>
 </resources>
