@@ -14,21 +14,14 @@ import com.edwinyosua.ceritaapp.ui.activity.home.HomeAct
 
 class LoginAct : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-//    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-//    private val loginViewModel: LoginViewModel by viewModels<LoginViewModel> {
-//        factory
-//    }
-
+    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+    private val loginViewModel: LoginViewModel by viewModels<LoginViewModel> {
+        factory
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-        val loginViewModel: LoginViewModel by viewModels<LoginViewModel> {
-            factory
-        }
 
 
         binding.apply {

@@ -6,10 +6,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.edwinyosua.ceritaapp.network.apiresponse.ListStoryItem
-import com.edwinyosua.ceritaapp.repository.AppsRepository
+import com.edwinyosua.ceritaapp.repository.AppRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val appRepo: AppsRepository) : ViewModel() {
+class HomeViewModel(private val appRepo: AppRepository) : ViewModel() {
 
 
     val storiesList: LiveData<PagingData<ListStoryItem>> =

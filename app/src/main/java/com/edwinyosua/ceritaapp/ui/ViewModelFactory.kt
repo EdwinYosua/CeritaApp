@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.edwinyosua.ceritaapp.di.Injection
-import com.edwinyosua.ceritaapp.repository.AppsRepository
+import com.edwinyosua.ceritaapp.repository.AppRepository
 import com.edwinyosua.ceritaapp.ui.activity.detail.DetailViewModel
 import com.edwinyosua.ceritaapp.ui.activity.home.HomeViewModel
 import com.edwinyosua.ceritaapp.ui.activity.login.LoginViewModel
@@ -12,7 +12,7 @@ import com.edwinyosua.ceritaapp.ui.activity.main.MainViewModel
 import com.edwinyosua.ceritaapp.ui.activity.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
-    private val appRepo: AppsRepository,
+    private val appRepo: AppRepository,
 //    private val pref: SettingPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
 

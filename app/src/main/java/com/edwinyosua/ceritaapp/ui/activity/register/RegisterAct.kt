@@ -14,19 +14,15 @@ import com.edwinyosua.ceritaapp.ui.activity.main.MainActivity
 
 class RegisterAct : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-
+    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+    private val registerViewModel: RegisterViewModel by viewModels<RegisterViewModel> {
+        factory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-        val registerViewModel: RegisterViewModel by viewModels<RegisterViewModel> {
-            factory
-        }
-
 
 
         binding.apply {

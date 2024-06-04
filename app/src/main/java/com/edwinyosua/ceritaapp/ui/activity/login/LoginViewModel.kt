@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.edwinyosua.ceritaapp.network.apiresponse.LoginResponse
 import com.edwinyosua.ceritaapp.network.ApiResult
-import com.edwinyosua.ceritaapp.repository.AppsRepository
+import com.edwinyosua.ceritaapp.repository.AppRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class LoginViewModel(
-    private val appRepo: AppsRepository,
+    private val appRepo: AppRepository,
 ) : ViewModel() {
 
     private val _loginResult = MutableLiveData<ApiResult<LoginResponse>>()

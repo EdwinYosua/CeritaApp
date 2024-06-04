@@ -1,39 +1,43 @@
 package com.edwinyosua.ceritaapp.network.apiresponse
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class DetailResponse(
 
     @field:SerializedName("error")
-    val error: Boolean? = null,
+    val error: Boolean,
 
     @field:SerializedName("message")
-    val message: String? = null,
+    val message: String,
 
     @field:SerializedName("story")
-    val story: Story? = null
+    val story: ListStoryItem
 )
 
-data class Story(
+@Entity(tableName = "story")
+data class ListStoryItem(
+
+    @PrimaryKey
+    @field:SerializedName("id")
+    val id: String,
 
     @field:SerializedName("photoUrl")
-    val photoUrl: String? = null,
+    val photoUrl: String,
 
     @field:SerializedName("createdAt")
-    val createdAt: String? = null,
+    val createdAt: String,
 
     @field:SerializedName("name")
-    val name: String? = null,
+    val name: String,
 
     @field:SerializedName("description")
-    val description: String? = null,
+    val description: String,
 
     @field:SerializedName("lon")
-    val lon: Any? = null,
-
-    @field:SerializedName("id")
-    val id: String? = null,
+    val lon: Double,
 
     @field:SerializedName("lat")
-    val lat: Any? = null
+    val lat: String
 )

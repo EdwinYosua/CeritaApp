@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.edwinyosua.ceritaapp.network.apiresponse.RegisterResponse
 import com.edwinyosua.ceritaapp.network.ApiResult
-import com.edwinyosua.ceritaapp.repository.AppsRepository
+import com.edwinyosua.ceritaapp.repository.AppRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class RegisterViewModel(private val appRepo: AppsRepository) : ViewModel() {
+class RegisterViewModel(private val appRepo: AppRepository) : ViewModel() {
 
     private val _registResult = MutableLiveData<ApiResult<RegisterResponse>>()
     val registResult: LiveData<ApiResult<RegisterResponse>> = _registResult

@@ -4,13 +4,13 @@ import android.content.Context
 import com.edwinyosua.ceritaapp.local.SettingPreferences
 import com.edwinyosua.ceritaapp.local.dataStore
 import com.edwinyosua.ceritaapp.network.ApiConfig
-import com.edwinyosua.ceritaapp.repository.AppsRepository
+import com.edwinyosua.ceritaapp.repository.AppRepository
 
 object Injection {
 
-    fun provideRepo(context: Context): AppsRepository {
+    fun provideRepo(context: Context): AppRepository {
         val pref = SettingPreferences.getInstance(context.dataStore)
         val apiService = ApiConfig.getApiService(pref)
-        return AppsRepository.getInstance(apiService, pref)
+        return AppRepository.getInstance(apiService, pref)
     }
 }

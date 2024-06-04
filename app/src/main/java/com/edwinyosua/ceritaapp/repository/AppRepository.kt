@@ -11,7 +11,7 @@ import com.edwinyosua.ceritaapp.network.StoriesPagingSources
 import com.edwinyosua.ceritaapp.network.apiresponse.ListStoryItem
 import com.edwinyosua.ceritaapp.network.apiresponse.LoginResponse
 
-class AppsRepository private constructor(
+class AppRepository private constructor(
     private val apiService: ApiService,
     private val pref: SettingPreferences
 ) {
@@ -42,14 +42,15 @@ class AppsRepository private constructor(
         return client
     }
 
+    suspend fun getStoriesDetailById(id: String) = apiService.getDetailStories(id)
 
 
     companion object {
         @Volatile
-        private var instance: AppsRepository? = null
-        fun getInstance(apiService: ApiService, pref: SettingPreferences): AppsRepository =
+        private var instance: AppRepository? = null
+        fun getInstance(apiService: ApiService, pref: SettingPreferences): AppRepository =
             instance ?: synchronized(this) {
-                instance ?: AppsRepository(apiService, pref).also { instance = it }
+                instance ?: AppRepository(apiService, pref).also { instance = it }
             }
     }
 

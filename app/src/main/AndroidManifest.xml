@@ -15,6 +15,9 @@
         android:theme="@style/Theme.CeritaApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.detail.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.home.HomeAct"
             android:exported="false" />
         <activity
