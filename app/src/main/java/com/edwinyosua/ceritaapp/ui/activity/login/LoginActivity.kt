@@ -1,4 +1,4 @@
-package com.edwinyosua.ceritaapp.ui.activity.register
+package com.edwinyosua.ceritaapp.ui.activity.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,64 +7,57 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.edwinyosua.ceritaapp.R
-import com.edwinyosua.ceritaapp.databinding.ActivityRegisterBinding
+import com.edwinyosua.ceritaapp.databinding.ActivityLoginBinding
 import com.edwinyosua.ceritaapp.network.ApiResult
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
-import com.edwinyosua.ceritaapp.ui.activity.main.MainActivity
+import com.edwinyosua.ceritaapp.ui.activity.home.HomeActivity
 
-class RegisterAct : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterBinding
+class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
     private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-    private val registerViewModel: RegisterViewModel by viewModels<RegisterViewModel> {
+    private val loginViewModel: LoginViewModel by viewModels<LoginViewModel> {
         factory
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         binding.apply {
-            btnDaftar.setOnClickListener {
-
-                if (edtName.text?.isEmpty() == true) {
-                    edtName.error = getString(R.string.error_nama)
-                }
+            btnLogin.setOnClickListener {
                 if (edtEmail.text?.isEmpty() == true) {
                     edtEmail.error = getString(R.string.error_email)
                 }
                 if (edtPassword.text?.isEmpty() == true) {
                     edtPassword.error = getString(R.string.error_password)
                 }
-                if (edtName.text?.isNotEmpty() == true
-                    && edtEmail.text?.isNotEmpty() == true
-                    && edtPassword.text?.isNotEmpty() == true
+                if (edtEmail.text?.isNotEmpty() == true &&
+                    edtPassword.text?.isNotEmpty() == true
                 ) {
-                    registerViewModel.registerUser(
-                        edtName.text?.trim().toString(),
+                    loginViewModel.loginUser(
                         edtEmail.text?.trim().toString(),
                         edtPassword.text?.trim().toString()
                     )
                 }
             }
 
-
-            registerViewModel.registResult.observe(this@RegisterAct) { response ->
+            loginViewModel.loginResult.observe(this@LoginActivity) { response ->
                 when (response) {
                     is ApiResult.ApiError -> {
                         prgBar.visibility = View.GONE
                         showToast(response.error)
-                        btnDaftar.isEnabled = true
+                        btnLogin.isEnabled = true
                     }
 
                     is ApiResult.ApiSuccess -> {
                         prgBar.visibility = View.GONE
                         showToast(response.data.message.toString())
-                        btnDaftar.isEnabled = true
-                        val registIntent = Intent(this@RegisterAct, MainActivity::class.java)
+                        btnLogin.isEnabled = true
+                        val loginIntent = Intent(this@LoginActivity, HomeActivity::class.java)
                         startActivity(
-                            registIntent.addFlags(
+                            loginIntent.addFlags(
                                 Intent.FLAG_ACTIVITY_CLEAR_TOP or
                                         Intent.FLAG_ACTIVITY_NEW_TASK or
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -75,7 +68,7 @@ class RegisterAct : AppCompatActivity() {
 
                     ApiResult.Loading -> {
                         prgBar.visibility = View.VISIBLE
-                        btnDaftar.isEnabled = false
+                        btnLogin.isEnabled = false
                     }
                 }
             }

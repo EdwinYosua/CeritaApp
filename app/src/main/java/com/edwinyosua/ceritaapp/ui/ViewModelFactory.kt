@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.edwinyosua.ceritaapp.di.Injection
 import com.edwinyosua.ceritaapp.repository.AppRepository
+import com.edwinyosua.ceritaapp.ui.activity.addmenu.AddMenuViewModel
 import com.edwinyosua.ceritaapp.ui.activity.detail.DetailViewModel
 import com.edwinyosua.ceritaapp.ui.activity.home.HomeViewModel
 import com.edwinyosua.ceritaapp.ui.activity.login.LoginViewModel
@@ -33,6 +34,9 @@ class ViewModelFactory private constructor(
         }
         if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
             return DetailViewModel(appRepo) as T
+        }
+        if (modelClass.isAssignableFrom(AddMenuViewModel::class.java)) {
+            return AddMenuViewModel(appRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class : ${modelClass.name}")
     }

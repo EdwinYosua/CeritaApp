@@ -60,12 +60,12 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     //Paging
-    implementation (libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.runtime)
     //Glide
-    implementation (libs.glide)
+    implementation(libs.glide)
     //Room
-    implementation (libs.androidx.room.runtime)
-    implementation (libs.androidx.room.paging)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.paging)
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.core.ktx)

@@ -7,9 +7,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.edwinyosua.ceritaapp.databinding.ActivityMainBinding
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
-import com.edwinyosua.ceritaapp.ui.activity.home.HomeAct
-import com.edwinyosua.ceritaapp.ui.activity.login.LoginAct
-import com.edwinyosua.ceritaapp.ui.activity.register.RegisterAct
+import com.edwinyosua.ceritaapp.ui.activity.home.HomeActivity
+import com.edwinyosua.ceritaapp.ui.activity.login.LoginActivity
+import com.edwinyosua.ceritaapp.ui.activity.register.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             mainViewModel.getToken().observe(this@MainActivity) { token ->
                 if (token != null) {
-                    val startIntent = Intent(this@MainActivity, HomeAct::class.java)
+                    val startIntent = Intent(this@MainActivity, HomeActivity::class.java)
                     startActivity(startIntent)
                     finish()
                 } else {
@@ -40,10 +40,10 @@ class MainActivity : AppCompatActivity() {
 
 
             registerBtn.setOnClickListener {
-                startActivity(Intent(this@MainActivity, RegisterAct::class.java))
+                startActivity(Intent(this@MainActivity, RegisterActivity::class.java))
             }
             loginBtn.setOnClickListener {
-                startActivity(Intent(this@MainActivity, LoginAct::class.java))
+                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             }
         }
     }

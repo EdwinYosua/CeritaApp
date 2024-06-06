@@ -16,4 +16,13 @@
     <string name="story_img">story_img</string>
     <string name="retry_txt">Retry</string>
     <string name="image_detail">image detail</string>
+    <string name="add_stories">add_stories</string>
+    <string name="preview_img">preview img</string>
+    <string name="post">POST</string>
+    <string name="cancel">CANCEL</string>
+    <string name="galeri">GALLERY</string>
+    <string name="img_warning">Empty Image</string>
+    <string name="desc_warning">Description is Empty</string>
+    <string name="camera">CAMERA</string>
+    <string name="hint_desc">What\'s happening ?</string>
 </resources>

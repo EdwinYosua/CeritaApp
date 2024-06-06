@@ -13,7 +13,7 @@ class HomeViewModel(private val appRepo: AppRepository) : ViewModel() {
 
 
     val storiesList: LiveData<PagingData<ListStoryItem>> =
-    appRepo.getAllStories().cachedIn(viewModelScope)
+        appRepo.getAllStories().cachedIn(viewModelScope)
 
     fun logoutUser() {
         viewModelScope.launch {

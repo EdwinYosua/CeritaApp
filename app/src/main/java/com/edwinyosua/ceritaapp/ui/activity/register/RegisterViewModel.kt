@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.edwinyosua.ceritaapp.network.apiresponse.RegisterResponse
 import com.edwinyosua.ceritaapp.network.ApiResult
+import com.edwinyosua.ceritaapp.network.apiresponse.RegisterResponse
 import com.edwinyosua.ceritaapp.repository.AppRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException

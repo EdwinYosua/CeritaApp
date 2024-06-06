@@ -10,6 +10,9 @@ import com.edwinyosua.ceritaapp.network.ApiService
 import com.edwinyosua.ceritaapp.network.StoriesPagingSources
 import com.edwinyosua.ceritaapp.network.apiresponse.ListStoryItem
 import com.edwinyosua.ceritaapp.network.apiresponse.LoginResponse
+import com.edwinyosua.ceritaapp.network.apiresponse.UploadResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class AppRepository private constructor(
     private val apiService: ApiService,
@@ -43,6 +46,20 @@ class AppRepository private constructor(
     }
 
     suspend fun getStoriesDetailById(id: String) = apiService.getDetailStories(id)
+
+    suspend fun uploadStories(
+        multiBody: MultipartBody.Part,
+        reqBodyDesc: RequestBody,
+        latReqBody: RequestBody?,
+        lonReqBody: RequestBody?
+    ): UploadResponse {
+        return apiService.uploadImage(
+            multiBody,
+            reqBodyDesc,
+            latReqBody,
+            lonReqBody
+        )
+    }
 
 
     companion object {

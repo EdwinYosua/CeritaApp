@@ -10,25 +10,36 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.edwinyosua.ceritaapp.R
 import com.edwinyosua.ceritaapp.databinding.ActivityHomeBinding
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
+import com.edwinyosua.ceritaapp.ui.activity.addmenu.AddMenuActivity
+import com.edwinyosua.ceritaapp.ui.activity.main.MainActivity
 import com.edwinyosua.ceritaapp.ui.adapter.LoadingStateAdapter
 import com.edwinyosua.ceritaapp.ui.adapter.StoryAdapter
-import com.edwinyosua.ceritaapp.ui.activity.main.MainActivity
 
-class HomeAct : AppCompatActivity() {
+
+class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+    private lateinit var fct: ViewModelFactory
     private val homeViewModel: HomeViewModel by viewModels {
-        factory
+        fct
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+        fct = factory
+
 
         binding.rvStories.layoutManager = LinearLayoutManager(this)
         getStoriesData()
+
+
+        binding.addBtn.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, AddMenuActivity::class.java))
+        }
     }
 
     private fun getStoriesData() {
@@ -42,8 +53,6 @@ class HomeAct : AppCompatActivity() {
         homeViewModel.storiesList.observe(this) {
             adapter.submitData(lifecycle, it)
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -55,7 +64,7 @@ class HomeAct : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_logout -> {
                 homeViewModel.logoutUser()
-                val logoutIntent = Intent(this@HomeAct, MainActivity::class.java)
+                val logoutIntent = Intent(this@HomeActivity, MainActivity::class.java)
                 startActivity(
                     logoutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 )
