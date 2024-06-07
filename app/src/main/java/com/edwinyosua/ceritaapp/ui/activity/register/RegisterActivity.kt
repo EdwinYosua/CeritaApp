@@ -1,5 +1,7 @@
 package com.edwinyosua.ceritaapp.ui.activity.register
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -24,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        playAnimation()
 
         binding.apply {
             btnDaftar.setOnClickListener {
@@ -80,6 +83,32 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun playAnimation() {
+        binding.apply {
+            ObjectAnimator.ofFloat(appIcon, View.TRANSLATION_X, -30f, 30f).apply {
+                duration = 6000
+                repeatCount = ObjectAnimator.INFINITE
+                repeatMode = ObjectAnimator.REVERSE
+            }.start()
+
+            val registerText =
+                ObjectAnimator.ofFloat(registerText, View.ALPHA, 1f).setDuration(1000)
+            val edtNama = ObjectAnimator.ofFloat(edtName, View.ALPHA, 1f).setDuration(1000)
+            val edtEmail = ObjectAnimator.ofFloat(edtEmail, View.ALPHA, 1f).setDuration(1000)
+            val edtPass = ObjectAnimator.ofFloat(edtPassword, View.ALPHA, 1f).setDuration(1000)
+            val btnDaftar = ObjectAnimator.ofFloat(btnDaftar, View.ALPHA, 1f).setDuration(1000)
+
+            val together = AnimatorSet().apply {
+                playTogether(edtNama, edtEmail, edtPass)
+            }
+            AnimatorSet().apply {
+                playSequentially(registerText, together, btnDaftar)
+                start()
+            }
+        }
+
     }
 
     private fun showToast(msg: String) {

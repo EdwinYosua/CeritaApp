@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CeritaApp</string>
-    <string name="register">Register</string>
+    <string name="register">Sign Up for CeritaApp</string>
+    <string name="regist_headline">Register</string>
     <string name="login">Login</string>
     <string name="icon_app">icon app</string>
     <string name="selamat_datang_di_ceritaapp">Selamat Datang di CeritaApp</string>

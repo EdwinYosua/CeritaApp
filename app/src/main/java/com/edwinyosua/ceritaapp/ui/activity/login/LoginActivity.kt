@@ -1,5 +1,7 @@
 package com.edwinyosua.ceritaapp.ui.activity.login
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -24,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        playAnimation()
 
         binding.apply {
             btnLogin.setOnClickListener {
@@ -77,5 +80,30 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun playAnimation() {
+        ObjectAnimator.ofFloat(binding.appIcon, View.TRANSLATION_X, -30f, 30f).apply {
+            duration = 6000
+            repeatMode = ObjectAnimator.REVERSE
+            repeatCount = ObjectAnimator.INFINITE
+        }.start()
+
+        binding.apply {
+            val loginText = ObjectAnimator.ofFloat(loginTxt, View.ALPHA, 1f).setDuration(1000)
+            val emailEdt = ObjectAnimator.ofFloat(edtEmail, View.ALPHA, 1f).setDuration(1000)
+            val passEdt = ObjectAnimator.ofFloat(edtPassword, View.ALPHA, 1f).setDuration(1000)
+            val loginBtn = ObjectAnimator.ofFloat(btnLogin, View.ALPHA, 1f).setDuration(1000)
+
+            val together = AnimatorSet().apply {
+                playTogether(emailEdt, passEdt)
+            }
+
+            AnimatorSet().apply {
+                playSequentially(loginText, together, loginBtn)
+                start()
+            }
+        }
+
     }
 }

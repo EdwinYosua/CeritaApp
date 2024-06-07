@@ -13,5 +13,15 @@
         <item name="android:paddingHorizontal">16dp</item>
     </style>
 
+    <style name="TextExtraBold">
+        <item name="fontFamily">@font/inter_extrabold</item>
+    </style>
+
+    <style name="Headline" parent="TextExtraBold">
+        <item name="android:textSize">26sp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="Theme.CeritaApp" parent="Base.Theme.CeritaApp" />
 </resources>
