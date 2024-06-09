@@ -27,9 +27,6 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 class AddMenuActivity : AppCompatActivity() {
 
-    companion object {
-        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
-    }
 
     private lateinit var binding: ActivityAddMenuBinding
     private var currentImg: Uri? = null
@@ -155,6 +152,10 @@ class AddMenuActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
 
 }

@@ -161,7 +161,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         )
         val canvas = Canvas(bitmap)
         vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
-//    DrawableCompat.setTint(vectorDrawable, color)
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }

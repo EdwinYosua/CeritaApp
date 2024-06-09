@@ -12,9 +12,6 @@ import com.edwinyosua.ceritaapp.ui.ViewModelFactory
 
 class DetailActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_ID = "extra_id"
-    }
 
     private lateinit var binding: ActivityDetailBinding
     private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
@@ -64,5 +61,10 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+
+    companion object {
+        const val EXTRA_ID = "extra_id"
     }
 }
