@@ -12,6 +12,7 @@ import com.edwinyosua.ceritaapp.databinding.ActivityHomeBinding
 import com.edwinyosua.ceritaapp.ui.ViewModelFactory
 import com.edwinyosua.ceritaapp.ui.activity.addmenu.AddMenuActivity
 import com.edwinyosua.ceritaapp.ui.activity.main.MainActivity
+import com.edwinyosua.ceritaapp.ui.activity.map.MapsActivity
 import com.edwinyosua.ceritaapp.ui.adapter.LoadingStateAdapter
 import com.edwinyosua.ceritaapp.ui.adapter.StoryAdapter
 
@@ -62,6 +63,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.menu_stories_map -> {
+                startActivity(Intent(this@HomeActivity, MapsActivity::class.java))
+            }
+
             R.id.menu_logout -> {
                 homeViewModel.logoutUser()
                 val logoutIntent = Intent(this@HomeActivity, MainActivity::class.java)

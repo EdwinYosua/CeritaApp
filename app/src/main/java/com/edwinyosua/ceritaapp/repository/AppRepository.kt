@@ -1,5 +1,6 @@
 package com.edwinyosua.ceritaapp.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -10,6 +11,7 @@ import com.edwinyosua.ceritaapp.network.ApiService
 import com.edwinyosua.ceritaapp.network.StoriesPagingSources
 import com.edwinyosua.ceritaapp.network.apiresponse.ListStoryItem
 import com.edwinyosua.ceritaapp.network.apiresponse.LoginResponse
+import com.edwinyosua.ceritaapp.network.apiresponse.StoriesResponse
 import com.edwinyosua.ceritaapp.network.apiresponse.UploadResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -46,6 +48,16 @@ class AppRepository private constructor(
     }
 
     suspend fun getStoriesDetailById(id: String) = apiService.getDetailStories(id)
+    suspend fun getStoriesWithLocation(): StoriesResponse {
+        val client = apiService.getStoriesWithLocation()
+        if (client.listStory.isNotEmpty()) {
+            Log.d("AppRepository", "onSuccess")
+            return client
+        } else {
+            Log.d("AppRepository", "onFailure : ${client.message.toString()}")
+        }
+        return client
+    }
 
     suspend fun uploadStories(
         multiBody: MultipartBody.Part,

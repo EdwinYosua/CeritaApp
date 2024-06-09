@@ -53,4 +53,9 @@ interface ApiService {
         @Part("lon") lon: RequestBody? = null
     ): UploadResponse
 
+    @GET("stories")
+    suspend fun getStoriesWithLocation(
+        @Query("location") location: Int = 1,
+    ): StoriesResponse
+
 }

@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_stories_map"
+        android:icon="@drawable/travel_explore_24dp_fill0_wght400_grad0_opsz24"
+        android:title="@string/stories_map_list"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/menu_logout"
         android:title="@string/Logout"
         app:showAsAction="never" />

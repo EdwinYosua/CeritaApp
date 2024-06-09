@@ -10,6 +10,7 @@ import com.edwinyosua.ceritaapp.ui.activity.detail.DetailViewModel
 import com.edwinyosua.ceritaapp.ui.activity.home.HomeViewModel
 import com.edwinyosua.ceritaapp.ui.activity.login.LoginViewModel
 import com.edwinyosua.ceritaapp.ui.activity.main.MainViewModel
+import com.edwinyosua.ceritaapp.ui.activity.map.MapViewModel
 import com.edwinyosua.ceritaapp.ui.activity.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
@@ -37,6 +38,9 @@ class ViewModelFactory private constructor(
         }
         if (modelClass.isAssignableFrom(AddMenuViewModel::class.java)) {
             return AddMenuViewModel(appRepo) as T
+        }
+        if (modelClass.isAssignableFrom(MapViewModel::class.java)) {
+            return MapViewModel(appRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class : ${modelClass.name}")
     }
