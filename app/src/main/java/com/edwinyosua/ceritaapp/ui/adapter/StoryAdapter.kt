@@ -1,10 +1,8 @@
 package com.edwinyosua.ceritaapp.ui.adapter
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -47,9 +45,6 @@ class StoryAdapter() :
         }
     }
 
-    private fun showToast(msg: String, context: Context) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-    }
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {

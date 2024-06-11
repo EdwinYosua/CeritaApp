@@ -69,13 +69,24 @@ dependencies {
     implementation(libs.androidx.room.paging)
     implementation(libs.play.services.maps)
     ksp(libs.androidx.room.compiler)
+    //mockito
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+    //TestDispatcher
+    testImplementation(libs.kotlinx.coroutines.test.v190rc)
+    //InstantTaskExecutorRule()
+    testImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.androidx.core.testing)
+
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.android.v190rc)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity)
     testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
