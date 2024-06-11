@@ -3,8 +3,6 @@ package com.edwinyosua.ceritaapp.ui.activity.home
 import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.asLiveData
 import androidx.paging.AsyncPagingDataDiffer
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ListUpdateCallback
@@ -17,8 +15,6 @@ import com.edwinyosua.ceritaapp.repository.AppRepository
 import com.edwinyosua.ceritaapp.ui.adapter.StoryAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert
@@ -47,82 +43,70 @@ class HomeViewModelTest {
 
     private lateinit var homeViewModel: HomeViewModel
 
-    private lateinit var mockedLog: MockedStatic<Log>  // Hold the mocked static instance
+    private lateinit var mockedLog: MockedStatic<Log>
 
     @Before
     fun setUp() {
-        mockedLog = Mockito.mockStatic(Log::class.java)  // Start mocking
+        mockedLog = Mockito.mockStatic(Log::class.java)
         mockedLog.`when`<Boolean> {
             Log.isLoggable(
                 ArgumentMatchers.anyString(),
                 ArgumentMatchers.anyInt()
             )
         }.thenReturn(true)
+
+        val expectedList = MutableLiveData<PagingData<ListStoryItem>>()
+        Mockito.`when`(appRepo.getAllStories()).thenReturn(expectedList)
         homeViewModel = HomeViewModel(appRepo)
     }
 
     @After
     fun tearDown() {
-        mockedLog.close()  // Properly close the static mock after each test
+        mockedLog.close()
     }
 
-//    @Test
-//    fun `when Get Story Should Not Null and Return Data`() = runTest {
-//        val dummyStoriesResponse = DummyData.generateDummyStories()
-//        val expectedList = MutableLiveData<PagingData<ListStoryItem>>()
-//        val dataDummy: PagingData<ListStoryItem> =
-//            StoriesPagingSourcesTest.snapShot(dummyStoriesResponse)
-//
-//        Mockito.`when`(appRepo.getAllStories()).thenReturn(expectedList)
-//
-//        expectedList.value = dataDummy
-//
-//
-//        val homeVm = HomeViewModel(appRepo)
-//        val actualList: PagingData<ListStoryItem> = homeVm.storiesList.getOrAwaitValue()
-//
-//        val diff = AsyncPagingDataDiffer(
-//            diffCallback = StoryAdapter.DIFF_CALLBACK,
-//            updateCallback = noopListUpdateCallback,
-//            workerDispatcher = Dispatchers.Main
-//        )
-//        diff.submitData(actualList)
-//        Assert.assertNotNull(diff.snapshot())
-//        Assert.assertEquals(dummyStoriesResponse.size, diff.snapshot().size)
-//        Assert.assertEquals(dummyStoriesResponse[0], diff.snapshot()[0])
-//    }
-
-
     @Test
-    fun `when Get List Empty Should Return No Data`() = runTest {
-//        val data: PagingData<ListStoryItem> = PagingData.from(emptyList())
-//        val expectedList = MutableLiveData<PagingData<ListStoryItem>>()
-//        expectedList.value = data
-//        Mockito.`when`(appRepo.getAllStories()).thenReturn(expectedList)
-//        val homeVm = HomeViewModel(appRepo)
-//        val actualList: PagingData<ListStoryItem> = homeVm.storiesList.getOrAwaitValue()
-//        val diff = AsyncPagingDataDiffer(
-//            diffCallback = StoryAdapter.DIFF_CALLBACK,
-//            updateCallback = noopListUpdateCallback,
-//            workerDispatcher = Dispatchers.Main
-//        )
-//        diff.submitData(actualList)
-//        Assert.assertEquals(0, diff.snapshot().size)
+    fun `when Get Story Should Not Null and Return Data`() = runTest {
+        val dummyStoriesResponse = DummyData.generateDummyStories()
+        val expectedList = MutableLiveData<PagingData<ListStoryItem>>()
+        val dataDummy: PagingData<ListStoryItem> =
+            StoriesPagingSourcesTest.snapShot(dummyStoriesResponse)
 
-        val dummyStories = emptyList<ListStoryItem>()
-        val pagingData = PagingData.from(dummyStories)
-        Mockito.`when`(appRepo.getAllStories()).thenReturn(flowOf(pagingData).asLiveData())
+        Mockito.`when`(appRepo.getAllStories()).thenReturn(expectedList)
 
-        val actualList = homeViewModel.storiesList.asFlow().first()
+        expectedList.value = dataDummy
+
+
+        val homeVm = HomeViewModel(appRepo)
+        val actualList: PagingData<ListStoryItem> = homeVm.storiesList.getOrAwaitValue()
 
         val diff = AsyncPagingDataDiffer(
             diffCallback = StoryAdapter.DIFF_CALLBACK,
             updateCallback = noopListUpdateCallback,
             workerDispatcher = Dispatchers.Main
         )
-
         diff.submitData(actualList)
         Assert.assertNotNull(diff.snapshot())
+        Assert.assertEquals(dummyStoriesResponse.size, diff.snapshot().size)
+        Assert.assertEquals(dummyStoriesResponse[0], diff.snapshot()[0])
+    }
+
+
+    @Test
+    fun `when Get List Empty Should Return No Data`() = runTest {
+        val data: PagingData<ListStoryItem> = PagingData.from(emptyList())
+        val expectedList = MutableLiveData<PagingData<ListStoryItem>>()
+        expectedList.value = data
+        Mockito.`when`(appRepo.getAllStories()).thenReturn(expectedList)
+
+        val homeVm = HomeViewModel(appRepo)
+        val actualList: PagingData<ListStoryItem> = homeVm.storiesList.getOrAwaitValue()
+        val diff = AsyncPagingDataDiffer(
+            diffCallback = StoryAdapter.DIFF_CALLBACK,
+            updateCallback = noopListUpdateCallback,
+            workerDispatcher = Dispatchers.Main
+        )
+        diff.submitData(actualList)
         Assert.assertEquals(0, diff.snapshot().size)
     }
 }
